@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Free Firebase Firestore Leak Scan — runs in your browser, no install</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Paste your Firebase project ID. Get an instant report of which Firestore collections are publicly readable. Runs in your browser - the project ID never leaves your machine.">
+<meta property="og:title" content="Free Firebase Leak Scan — instant, no install">
+<meta property="og:description" content="Paste a project ID. See what's exposed in 10 seconds.">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-white min-h-screen">
+<div class="max-w-3xl mx-auto px-6 py-10">
+
+  <a href="/firebase-security-skill/" class="text-orange-400 underline text-sm">&larr; Back to landing</a>
+
+  <h1 class="text-4xl font-bold mt-6 mb-2">Free Firebase Leak Scan</h1>
+  <p class="text-slate-300 mb-6">Paste your Firebase <strong>project ID</strong>. The scan runs entirely in your browser. <strong>Nothing is sent to my server.</strong> Open DevTools &rarr; Network if you want to verify &mdash; every request goes directly from your browser to <code>firestore.googleapis.com</code> as an unauthenticated GET.</p>
+
+  <div class="bg-slate-800 rounded-xl p-6 border border-slate-700">
+    <label class="block">
+      <span class="text-sm font-medium text-orange-300">Firebase project ID</span>
+      <input id="pid" type="text" placeholder="my-app-1a2b3" class="mt-1 w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm font-mono">
+      <span class="text-xs text-slate-400 mt-1 block">Find it in Firebase Console &rarr; Project Settings &rarr; General. Or it's in your firebase-config.js as <code>projectId</code>.</span>
+    </label>
+    <label class="block mt-4">
+      <span class="text-sm font-medium text-orange-300">Collections to probe (comma-separated, optional)</span>
+      <input id="cols" type="text" placeholder="users, posts, messages, orders, profiles, ..." class="mt-1 w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm font-mono">
+      <span class="text-xs text-slate-400 mt-1 block">Leave blank to probe a default list of common collection names. Add your own for a more targeted scan.</span>
+    </label>
+    <button id="scan" class="mt-5 bg-orange-500 hover:bg-orange-400 text-slate-900 font-bold px-6 py-3 rounded-lg w-full transition disabled:opacity-50 disabled:cursor-not-allowed">Scan now</button>
+    <p class="text-xs text-slate-500 mt-3">Only scan projects you own or have written authorization to test. Anyone can do this kind of probe; making it visible to you is the point.</p>
+  </div>
+
+  <div id="results" class="mt-8 hidden">
+    <h2 class="text-2xl font-bold mb-3">Results</h2>
+    <div id="summary" class="mb-4"></div>
+    <div id="findings" class="space-y-3"></div>
+    <div class="mt-6 bg-orange-900/40 border border-orange-500/40 rounded-xl p-5">
+      <p class="text-sm">Found leaks and want a full audit (every collection, subcollection, storage rules, custom security rules) + written PDF report with paste-ready firestore.rules?</p>
+      <div class="mt-3 flex flex-wrap gap-2">
+        <a href="https://buy.stripe.com/14A4gz4zCfj44mlg9IcAo09" class="inline-block bg-white text-orange-700 font-bold px-5 py-2 rounded-lg">Lite audit &mdash; $29</a>
+        <a href="https://buy.stripe.com/8x2cN56HK2wi3ihf5EcAo08" class="inline-block bg-orange-400 hover:bg-orange-300 text-slate-900 font-bold px-5 py-2 rounded-lg">Full audit &mdash; $99 (24h)</a>
+        <a href="/firebase-security-skill/" class="ml-3 text-orange-300 underline text-sm self-center">More info</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-12 text-xs text-slate-500">
+    <p><strong>How this works:</strong> the form fires <code>GET https://firestore.googleapis.com/v1/projects/&lt;your-id&gt;/databases/(default)/documents/&lt;collection&gt;?pageSize=1</code> as unauthenticated for each collection name. If the response has documents, the collection is publicly readable (your firestore.rules are too permissive). Status 403/401 means rules properly block; 404 means the collection doesn't exist.</p>
+    <p class="mt-2">Want a deeper scan with your actual rules file? Run: <code>npx firebase-security ./firestore.rules --project-id &lt;your-id&gt;</code> (free, MIT). Or run the same on Apify: <a class="text-orange-300 underline" href="https://apify.com/perufitlife/firebase-security-auditor">apify.com/perufitlife/firebase-security-auditor</a>.</p>
+  </div>
+
+</div>
+
+<script>
+const COMMON_COLLECTIONS = [
+  "users", "profiles", "user_profiles", "accounts", "members",
+  "posts", "comments", "messages", "chats", "conversations",
+  "orders", "purchases", "payments", "subscriptions", "invoices",
+  "products", "items", "carts", "wishlists", "reviews",
+  "notifications", "events", "logs", "audit",
+  "files", "uploads", "documents", "media",
+  "settings", "config", "feature_flags",
+  "tenants", "organizations", "teams", "workspaces", "projects",
+  "publicData", "testMode"
+];
+
+document.getElementById("scan").addEventListener("click", async () => {
+  const pid = document.getElementById("pid").value.trim();
+  const customCols = document.getElementById("cols").value.trim();
+  const cols = customCols
+    ? customCols.split(/[,\s]+/).filter(Boolean)
+    : COMMON_COLLECTIONS;
+
+  if (!pid) { alert("Project ID is required."); return; }
+  if (!/^[a-z0-9-]+$/i.test(pid)) {
+    if (!confirm("That doesn't look like a typical project ID. Continue anyway?")) return;
+  }
+
+  const btn = document.getElementById("scan");
+  btn.disabled = true;
+  btn.innerText = "Scanning...";
+
+  const resultsDiv = document.getElementById("results");
+  const findingsDiv = document.getElementById("findings");
+  const summaryDiv = document.getElementById("summary");
+  resultsDiv.classList.remove("hidden");
+  findingsDiv.innerHTML = "";
+  summaryDiv.innerHTML = `<div class="text-sm text-slate-300">Probing ${cols.length} collections anonymously...</div>`;
+
+  let leaked = 0, blocked = 0, notFound = 0, errors = 0;
+  const findings = [];
+
+  for (const col of cols) {
+    try {
+      const url = `https://firestore.googleapis.com/v1/projects/${encodeURIComponent(pid)}/databases/(default)/documents/${encodeURIComponent(col)}?pageSize=1`;
+      const r = await fetch(url);
+      const status = r.status;
+      const body = await r.text();
+      let data = null;
+      try { data = JSON.parse(body); } catch {}
+
+      if (status === 200 && data?.documents?.length > 0) {
+        leaked++;
+        const fields = Object.keys(data.documents[0].fields || {});
+        const docPath = data.documents[0].name?.split("/").slice(-2).join("/");
+        findings.push({ col, status, docCount: data.documents.length, fields, samplePath: docPath, bytes: body.length });
+      } else if (status === 200) {
+        // empty collection, technically accessible
+        leaked++;
+        findings.push({ col, status, docCount: 0, fields: [], note: "collection accessible (empty)", bytes: body.length });
+      } else if (status === 401 || status === 403) {
+        blocked++;
+      } else if (status === 404) {
+        notFound++;
+      } else {
+        errors++;
+      }
+    } catch (e) {
+      errors++;
+    }
+    summaryDiv.innerHTML = `<div class="text-sm text-slate-300">${leaked} leaked / ${blocked} blocked / ${notFound} no-such / ${errors} errors so far...</div>`;
+  }
+
+  if (findings.length === 0) {
+    summaryDiv.innerHTML = `<div class="bg-emerald-900/40 border border-emerald-500/40 p-4 rounded-lg">
+      <strong class="text-emerald-200">Good news:</strong> none of the ${cols.length} probed collections returned data anonymously.
+      <div class="text-xs text-slate-300 mt-2">${blocked} returned 403/401 (rules properly block). ${notFound} returned 404 (no such collection). This is what a healthy Firestore looks like.</div>
+    </div>`;
+  } else {
+    summaryDiv.innerHTML = `<div class="bg-red-900/50 border border-red-500/50 p-4 rounded-lg">
+      <strong class="text-red-200">${findings.length} collection(s) accessible without auth.</strong>
+      <div class="text-sm text-slate-300 mt-1">${blocked} other probes were properly blocked. Anyone with this project ID can read these collections right now.</div>
+    </div>`;
+    findingsDiv.innerHTML = findings.map(f => `
+      <div class="bg-red-950/40 border-l-4 border-red-500 p-4 rounded">
+        <div class="font-bold text-red-200">&#9656; ${f.col}</div>
+        <div class="text-xs text-slate-300 mt-1">HTTP ${f.status} &middot; ${f.docCount} doc(s) returned &middot; ${f.bytes} bytes${f.note ? " &middot; " + f.note : ""}</div>
+        ${f.samplePath ? `<div class="text-xs text-slate-400 mt-1">Sample document: <code>${f.samplePath}</code></div>` : ""}
+        ${f.fields.length ? `<div class="text-xs text-slate-400 mt-1">Fields visible: <code>${f.fields.join(", ")}</code></div>` : ""}
+      </div>
+    `).join("");
+  }
+
+  btn.disabled = false;
+  btn.innerText = "Scan again";
+});
+</script>
+
+</body>
+</html>
