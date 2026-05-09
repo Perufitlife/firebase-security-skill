@@ -7,9 +7,17 @@
     "firebase-security": "./scripts/audit.js"
   },
   "scripts": {
-    "audit": "node scripts/audit.js"
+    "audit": "node scripts/audit.js",
+    "postinstall": "node scripts/postinstall.js || true"
   },
-  "keywords": ["firebase", "firestore", "security", "audit", "rules", "leak"],
+  "keywords": [
+    "firebase",
+    "firestore",
+    "security",
+    "audit",
+    "rules",
+    "leak"
+  ],
   "author": "Renzo Madueno (@Perufitlife)",
   "license": "MIT",
   "repository": {
