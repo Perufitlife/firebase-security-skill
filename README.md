@@ -2,6 +2,8 @@
 
 > Detect the infamous Firebase data-leak patterns (`match /{document=**} { allow read, write: if true; }`, expired test-mode rules, auth-without-ownership) in any `firestore.rules` file. Optional active probe sends an anonymous GET to the Firestore REST endpoint to PROVE the leak with real data.
 
+> ▶ **Run it without installing anything →** [apify.com/renzomacar/firebase-security-auditor](https://apify.com/renzomacar/firebase-security-auditor) (paste your firestore.rules + optional project ID, get HTML report)
+
 > ⚡ Want me to run it for you and send back a written report? **$99, 24h delivery →** https://perufitlife.github.io/supabase-security-skill/ (one landing covers all five — Supabase, PocketBase, Appwrite, Hasura, Firebase)
 
 ## Why this exists
