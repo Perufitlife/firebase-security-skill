@@ -1,1 +1,4 @@
+*.log
+devto_post.md
+linkedin_post.txt
 node_modules/

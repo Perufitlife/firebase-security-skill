@@ -1,0 +1,440 @@
+{
+  "summary": {
+    "scanned_at": "2026-05-09T15:28:01.378Z",
+    "n_projects": 35,
+    "n_leaking": 8,
+    "n_total_leaks": 12,
+    "pct_leaking": "22.9",
+    "leaks_by_collection": [
+      [
+        "users",
+        4
+      ],
+      [
+        "products",
+        3
+      ],
+      [
+        "posts",
+        2
+      ],
+      [
+        "messages",
+        1
+      ],
+      [
+        "profiles",
+        1
+      ],
+      [
+        "orders",
+        1
+      ]
+    ]
+  },
+  "results": [
+    {
+      "pid": "drillsargeant",
+      "repo": "lukedanielchapman/drillsargeant",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "clips-a9f32",
+      "repo": "MariosMiltiadous/GameRClips",
+      "leak_count": 1,
+      "leaks": [
+        {
+          "col": "users",
+          "leak": true,
+          "status": 200,
+          "docCount": 1,
+          "fields": [
+            "name",
+            "age",
+            "phoneNumber",
+            "pass",
+            "email"
+          ]
+        }
+      ]
+    },
+    {
+      "pid": "wavesdeso",
+      "repo": "GageVanK/waves-3.1",
+      "leak_count": 1,
+      "leaks": [
+        {
+          "col": "messages",
+          "leak": true,
+          "status": 200,
+          "docCount": 1,
+          "fields": [
+            "user",
+            "createdAt",
+            "room",
+            "photoURL",
+            "text"
+          ]
+        }
+      ]
+    },
+    {
+      "pid": "blz-one-9e383",
+      "repo": "tyler-ruff/cms-blz-one",
+      "leak_count": 4,
+      "leaks": [
+        {
+          "col": "users",
+          "leak": true,
+          "status": 200,
+          "docCount": 1,
+          "fields": [
+            "uid"
+          ]
+        },
+        {
+          "col": "profiles",
+          "leak": true,
+          "status": 200,
+          "docCount": 1,
+          "fields": [
+            "uid",
+            "lastOnline",
+            "bio",
+            "avatar",
+            "displayName",
+            "theme"
+          ]
+        },
+        {
+          "col": "posts",
+          "leak": true,
+          "status": 200,
+          "docCount": 1,
+          "fields": [
+            "description",
+            "title",
+            "image",
+            "categories",
+            "created_on",
+            "tags",
+            "text"
+          ]
+        },
+        {
+          "col": "products",
+          "leak": true,
+          "status": 200,
+          "docCount": 1,
+          "fields": [
+            "url",
+            "description",
+            "categories",
+            "title",
+            "subtitle",
+            "tags"
+          ]
+        }
+      ]
+    },
+    {
+      "pid": "to-do-list-a517c",
+      "repo": "Pranzz-2006/The-portfolio",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "eliteedge-12345",
+      "repo": "SamarjeetSingh-007/EliteEdge",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "deliverytrackerapp-a351d",
+      "repo": "Syedkaifali/scaling-octo-spoon",
+      "leak_count": 1,
+      "leaks": [
+        {
+          "col": "orders",
+          "leak": true,
+          "status": 200,
+          "docCount": 1,
+          "fields": [
+            "location",
+            "longitude",
+            "latitude",
+            "trackingId",
+            "expectedDelivery",
+            "timestamp",
+            "status"
+          ]
+        }
+      ]
+    },
+    {
+      "pid": "senaiteste-8eb47",
+      "repo": "Lisandro-Pinheiro/AppTrip",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "bitarcade-679b7",
+      "repo": "8Bit-Arcade/8BitArcade",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "stelblogsite",
+      "repo": "brightjonathan/Hover-blog",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "recipeblog-7412e",
+      "repo": "Fairhain/recipe-blog",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "your-project-id",
+      "repo": "SumitSaharawat/Fit4Life",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "devsign-web-bf756",
+      "repo": "belebaburao001/devsign.web",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "careformind",
+      "repo": "ashishkumar0987/mindcare",
+      "leak_count": 1,
+      "leaks": [
+        {
+          "col": "posts",
+          "leak": true,
+          "status": 200,
+          "docCount": 1,
+          "fields": [
+            "postText",
+            "author",
+            "createdAt",
+            "title"
+          ]
+        }
+      ]
+    },
+    {
+      "pid": "focushub-f1320",
+      "repo": "RonanEKane/FocusHub",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "semos-29209",
+      "repo": "kirthivasanr/semos",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "gcashtrack",
+      "repo": "ifjames/gcash-tracker",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "house-whisperer-ai",
+      "repo": "rchallapilla/House_Whisperer",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "react-vm",
+      "repo": "sarveshshejwadkar/react-vm",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "roofgriduk",
+      "repo": "AnunnakiDev/RoofGridUK-Flutter",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "inspira-f55e4",
+      "repo": "Ajosh-NyxBar/INSPIRA",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "inert-app",
+      "repo": "247pages/inert",
+      "leak_count": 1,
+      "leaks": [
+        {
+          "col": "users",
+          "leak": true,
+          "status": 200,
+          "docCount": 1,
+          "fields": [
+            "lastLogin",
+            "userID",
+            "uid",
+            "apiKey",
+            "encryptionKey",
+            "verified",
+            "name",
+            "accessKey",
+            "profilePic",
+            "bio",
+            "userName",
+            "photoURL",
+            "sessionKey",
+            "portfolio",
+            "email",
+            "uniqueId",
+            "ideas"
+          ]
+        }
+      ]
+    },
+    {
+      "pid": "data-collector-2025",
+      "repo": "fmendez72/data-collection-app",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "quiz-9152a",
+      "repo": "sharath2004-tech/quiz-web",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "e-commerce-app-af794",
+      "repo": "waseem96525/E-commerce-website",
+      "leak_count": 1,
+      "leaks": [
+        {
+          "col": "products",
+          "leak": true,
+          "status": 200,
+          "docCount": 1,
+          "fields": [
+            "quantity",
+            "updatedAt",
+            "icon",
+            "price",
+            "category",
+            "imageUrl",
+            "productId",
+            "createdAt",
+            "description",
+            "name",
+            "costPrice",
+            "fileName"
+          ]
+        }
+      ]
+    },
+    {
+      "pid": "userdata-248d0",
+      "repo": "Banupriya-25/userRegesrationform",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "big-easy-events",
+      "repo": "aviselanj/big-easy-events-frontend",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "student-resource-managem-de7e3",
+      "repo": "Pranay-ITM-2024/Student_Resource_Management-",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "moovie-35706",
+      "repo": "syedhamzaalinaqvi/linkshare1",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "theone36hrsapp",
+      "repo": "theone36mindspeak/theone36hrs-app-oficial",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "pingu-aa1",
+      "repo": "PingU-org/pingu-auth-docs",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "adoptame-fe689",
+      "repo": "juanAriel/app-adoptame",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "htmlthegrandcasitatheater",
+      "repo": "dbkovacs/htmlthegrandcasitatheater",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "tohfa-database",
+      "repo": "Shubhamgupta0309/Tohfa",
+      "leak_count": 2,
+      "leaks": [
+        {
+          "col": "users",
+          "leak": true,
+          "status": 200,
+          "docCount": 1,
+          "fields": [
+            "state",
+            "timestamp",
+            "addressLine1",
+            "orderNumber",
+            "zipCode",
+            "deliveryEstimate",
+            "addressLine2",
+            "totalAmount",
+            "city",
+            "paymentMethod",
+            "paymentId"
+          ]
+        },
+        {
+          "col": "products",
+          "leak": true,
+          "status": 200,
+          "docCount": 1,
+          "fields": [
+            "price",
+            "categories",
+            "description",
+            "id",
+            "imageUrls",
+            "name",
+            "category",
+            "imageUrl"
+          ]
+        }
+      ]
+    },
+    {
+      "pid": "bank-mannru2",
+      "repo": "upsidedowncan/website",
+      "leak_count": 0,
+      "leaks": []
+    }
+  ]
+}
