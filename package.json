@@ -1,0 +1,22 @@
+{
+  "name": "firebase-security",
+  "version": "0.1.0",
+  "description": "Audit Firebase Firestore Rules for the infamous 'if true' / wildcard-match-all data leak patterns. Static analyzer + optional anonymous probe of the Firestore REST endpoint to confirm leaks live.",
+  "type": "module",
+  "bin": {
+    "firebase-security": "./scripts/audit.js"
+  },
+  "scripts": {
+    "audit": "node scripts/audit.js"
+  },
+  "keywords": ["firebase", "firestore", "security", "audit", "rules", "leak"],
+  "author": "Renzo Madueno (@Perufitlife)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Perufitlife/firebase-security-skill"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

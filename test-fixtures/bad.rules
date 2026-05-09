@@ -1,0 +1,30 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // CRITICAL: classic wide-open
+    match /{document=**} {
+      allow read, write: if true;
+    }
+
+    // CRITICAL: bare if true on a specific path
+    match /publicData/{doc} {
+      allow read, write: if true;
+    }
+
+    // HIGH: auth-only no ownership
+    match /users/{uid} {
+      allow read, write: if request.auth != null;
+    }
+
+    // HIGH: test-mode timestamp (future date = currently open)
+    match /testMode/{doc} {
+      allow read, write: if request.time < timestamp.date(2027, 1, 1);
+    }
+
+    // OK: proper ownership check
+    match /privateNotes/{noteId} {
+      allow read, write: if request.auth != null && request.auth.uid == resource.data.ownerId;
+    }
+  }
+}
