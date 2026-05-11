@@ -1,7 +1,7 @@
 {
   "name": "firebase-security",
-  "version": "0.1.0",
-  "description": "Audit Firebase Firestore Rules for the infamous 'if true' / wildcard-match-all data leak patterns. Static analyzer + optional anonymous probe of the Firestore REST endpoint to confirm leaks live.",
+  "version": "0.2.0",
+  "description": "Audit Firebase Firestore Rules for the infamous 'if true' / wildcard-match-all data leak patterns. Keyless --discover mode parses your repo + probes Firestore REST anon (no service account). Active probe confirms leaks live.",
   "type": "module",
   "bin": {
     "firebase-security": "./scripts/audit.js"

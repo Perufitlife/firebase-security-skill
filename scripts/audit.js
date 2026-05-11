@@ -343,13 +343,36 @@ async function main() {
   firebase-security firestore.rules [--project-id PID] [--no-probe] [--html report.html]
   firebase-security --rules PATH [--project-id PID] [--no-probe] [--html report.html]
 
+  Keyless discover (parses local repo + probes Firestore REST anon):
+    firebase-security --discover [path] [--project-id PID]
+
 If --project-id is provided, the active probe sends an anonymous GET against
 https://firestore.googleapis.com/v1/projects/<pid>/databases/(default)/documents
 and reports CONFIRMED if documents are returned.
 
 Detects: open match-all wildcards, 'if true' literals, auth-only-no-ownership patterns,
-test-mode timestamp expiry, public-read storage uploads, missing explicit default-deny.`);
+test-mode timestamp expiry, public-read storage uploads, missing explicit default-deny.
+--discover: no rules file needed; parses collection(db, '...') call sites + probes.`);
     process.exit(1);
+  }
+
+  // --discover mode (v0.2): no rules file needed.
+  if (args.includes("--discover")) {
+    const { discover } = await import("./discover.js");
+    const idx = args.indexOf("--discover");
+    const path = args[idx + 1] && !args[idx + 1].startsWith("--") ? args[idx + 1] : process.cwd();
+    const pidOverride = args.includes("--project-id") ? args[args.indexOf("--project-id") + 1] : null;
+    const result = await discover({ root: path, projectId: pidOverride });
+
+    const htmlIdx = args.indexOf("--html");
+    if (htmlIdx !== -1) {
+      const out = args[htmlIdx + 1] || "discover-report.html";
+      const { renderHtml } = await import("./report.js");
+      writeFileSync(out, renderHtml(result));
+      console.error(`Discover report written to ${out}`);
+    }
+    console.log(JSON.stringify(result, null, 2));
+    return;
   }
 
   const flag = (k) => args.includes(k) ? args[args.indexOf(k) + 1] : null;
@@ -359,6 +382,8 @@ test-mode timestamp expiry, public-read storage uploads, missing explicit defaul
 
   if (!rulesPath && !projectId) {
     console.error("Error: provide a rules file path or --project-id (or FIREBASE_PROJECT_ID env var)");
+    console.error("\nTip: try --discover for a keyless scan of your local repo:");
+    console.error("  firebase-security --discover .");
     process.exit(1);
   }
 

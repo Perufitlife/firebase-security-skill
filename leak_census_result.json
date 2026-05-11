@@ -1,22 +1,22 @@
 {
   "summary": {
-    "scanned_at": "2026-05-09T15:28:01.378Z",
-    "n_projects": 35,
-    "n_leaking": 8,
-    "n_total_leaks": 12,
-    "pct_leaking": "22.9",
+    "scanned_at": "2026-05-09T15:43:54.859Z",
+    "n_projects": 77,
+    "n_leaking": 17,
+    "n_total_leaks": 23,
+    "pct_leaking": "22.1",
     "leaks_by_collection": [
       [
         "users",
+        11
+      ],
+      [
+        "posts",
         4
       ],
       [
         "products",
         3
-      ],
-      [
-        "posts",
-        2
       ],
       [
         "messages",
@@ -28,6 +28,14 @@
       ],
       [
         "orders",
+        1
+      ],
+      [
+        "items",
+        1
+      ],
+      [
+        "chats",
         1
       ]
     ]
@@ -50,11 +58,11 @@
           "status": 200,
           "docCount": 1,
           "fields": [
+            "pass",
             "name",
             "age",
-            "phoneNumber",
-            "pass",
-            "email"
+            "email",
+            "phoneNumber"
           ]
         }
       ]
@@ -70,11 +78,11 @@
           "status": 200,
           "docCount": 1,
           "fields": [
-            "user",
-            "createdAt",
-            "room",
             "photoURL",
-            "text"
+            "text",
+            "room",
+            "user",
+            "createdAt"
           ]
         }
       ]
@@ -99,12 +107,12 @@
           "status": 200,
           "docCount": 1,
           "fields": [
-            "uid",
             "lastOnline",
-            "bio",
             "avatar",
+            "theme",
+            "bio",
             "displayName",
-            "theme"
+            "uid"
           ]
         },
         {
@@ -114,12 +122,12 @@
           "docCount": 1,
           "fields": [
             "description",
-            "title",
-            "image",
-            "categories",
             "created_on",
+            "categories",
             "tags",
-            "text"
+            "text",
+            "image",
+            "title"
           ]
         },
         {
@@ -128,12 +136,12 @@
           "status": 200,
           "docCount": 1,
           "fields": [
-            "url",
-            "description",
-            "categories",
             "title",
+            "url",
+            "tags",
             "subtitle",
-            "tags"
+            "description",
+            "categories"
           ]
         }
       ]
@@ -161,13 +169,13 @@
           "status": 200,
           "docCount": 1,
           "fields": [
-            "location",
-            "longitude",
             "latitude",
+            "status",
+            "longitude",
             "trackingId",
             "expectedDelivery",
-            "timestamp",
-            "status"
+            "location",
+            "timestamp"
           ]
         }
       ]
@@ -220,9 +228,9 @@
           "docCount": 1,
           "fields": [
             "postText",
-            "author",
+            "title",
             "createdAt",
-            "title"
+            "author"
           ]
         }
       ]
@@ -280,23 +288,23 @@
           "status": 200,
           "docCount": 1,
           "fields": [
-            "lastLogin",
+            "ideas",
             "userID",
-            "uid",
-            "apiKey",
             "encryptionKey",
-            "verified",
             "name",
             "accessKey",
+            "uid",
+            "portfolio",
             "profilePic",
             "bio",
+            "uniqueId",
             "userName",
             "photoURL",
-            "sessionKey",
-            "portfolio",
+            "apiKey",
+            "verified",
             "email",
-            "uniqueId",
-            "ideas"
+            "sessionKey",
+            "lastLogin"
           ]
         }
       ]
@@ -324,18 +332,18 @@
           "status": 200,
           "docCount": 1,
           "fields": [
-            "quantity",
-            "updatedAt",
             "icon",
-            "price",
-            "category",
-            "imageUrl",
-            "productId",
-            "createdAt",
-            "description",
-            "name",
             "costPrice",
-            "fileName"
+            "imageUrl",
+            "category",
+            "updatedAt",
+            "quantity",
+            "createdAt",
+            "fileName",
+            "name",
+            "productId",
+            "price",
+            "description"
           ]
         }
       ]
@@ -399,17 +407,17 @@
           "status": 200,
           "docCount": 1,
           "fields": [
-            "state",
-            "timestamp",
-            "addressLine1",
-            "orderNumber",
+            "city",
             "zipCode",
+            "paymentMethod",
+            "orderNumber",
+            "paymentId",
+            "totalAmount",
             "deliveryEstimate",
             "addressLine2",
-            "totalAmount",
-            "city",
-            "paymentMethod",
-            "paymentId"
+            "timestamp",
+            "addressLine1",
+            "state"
           ]
         },
         {
@@ -418,14 +426,14 @@
           "status": 200,
           "docCount": 1,
           "fields": [
-            "price",
             "categories",
-            "description",
-            "id",
-            "imageUrls",
-            "name",
             "category",
-            "imageUrl"
+            "id",
+            "price",
+            "imageUrls",
+            "description",
+            "imageUrl",
+            "name"
           ]
         }
       ]
@@ -433,6 +441,437 @@
     {
       "pid": "bank-mannru2",
       "repo": "upsidedowncan/website",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "vugru-96d27",
+      "repo": "mehakfromdelhi/mehakthecat",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "test-login-1f731",
+      "repo": "abdessamadpas/Rideshare-With-Mobile",
+      "leak_count": 2,
+      "leaks": [
+        {
+          "col": "users",
+          "leak": true,
+          "status": 200,
+          "docCount": 1,
+          "fields": [
+            "wewe"
+          ]
+        },
+        {
+          "col": "posts",
+          "leak": true,
+          "status": 200,
+          "docCount": 1,
+          "fields": [
+            "ridetype",
+            "userId",
+            "from",
+            "rating",
+            "price",
+            "vehicule",
+            "postTime",
+            "to",
+            "postImg",
+            "postName",
+            "description"
+          ]
+        }
+      ]
+    },
+    {
+      "pid": "healthcare-mobileapp",
+      "repo": "VishalVrk/heathmonitor",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "dublinhighmun",
+      "repo": "TheLickIn13Keys/mun-manager",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "landing-54760",
+      "repo": "yamata077/testws1",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "shellhacks-go",
+      "repo": "RyderKeeny/ShellHacks-Frontend",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "apptenis-firebase",
+      "repo": "lauraximenam2/testDIRI",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "checkmate-80c76",
+      "repo": "changhsuen/Camping2025",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "shy-score",
+      "repo": "JeeQuu/manifest-game",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "casteloratimbum999",
+      "repo": "byglow9/Lia",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "past-jordan",
+      "repo": "vulkt/productpage",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "elamli-shop",
+      "repo": "elamli9/ELAMLI_SITE",
+      "leak_count": 1,
+      "leaks": [
+        {
+          "col": "users",
+          "leak": true,
+          "status": 200,
+          "docCount": 1,
+          "fields": [
+            "lastLogin",
+            "bookCredits"
+          ]
+        }
+      ]
+    },
+    {
+      "pid": "english-games-41017",
+      "repo": "Paradoxollie/English-games",
+      "leak_count": 1,
+      "leaks": [
+        {
+          "col": "users",
+          "leak": true,
+          "status": 200,
+          "docCount": 1,
+          "fields": [
+            "avatar",
+            "lastLogin",
+            "isAdmin",
+            "hashedPassword",
+            "username",
+            "lastPlayed",
+            "pendingXP",
+            "settings",
+            "coins",
+            "level",
+            "gameStats",
+            "achievements",
+            "inventory",
+            "pendingCoins",
+            "createdAt",
+            "xp"
+          ]
+        }
+      ]
+    },
+    {
+      "pid": "prueba-7825e",
+      "repo": "andergamer12/PRUEBA1",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "besys-platforma",
+      "repo": "berend-system/besys-website",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "encuesta-f56cd",
+      "repo": "joshua122388/RPS",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "jeu-du-clicker-86f40",
+      "repo": "gab-code-killer/exercice4",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "v-read",
+      "repo": "v-read/vreadextension",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "balancecheck-266c6",
+      "repo": "oblionC/SpendCheck",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "leo-openended-realm-engine",
+      "repo": "DesmondHsu/DesmondHsu.github.io",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "notepad-f2d4b",
+      "repo": "emrealtin5/Notepad",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "trueque-28b33",
+      "repo": "fedezam/trueque",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "duong-53920",
+      "repo": "LeVietDuongg/food",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "halal-monitoring-dashboar",
+      "repo": "Danajr25/HalalWebsite",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "uniquecode-78e52",
+      "repo": "TORY-SKY/codeGen",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "proyecto1-a6d0b",
+      "repo": "PracticanteAlmacen/ReservaCita.github.io",
+      "leak_count": 1,
+      "leaks": [
+        {
+          "col": "users",
+          "leak": true,
+          "status": 200,
+          "docCount": 1,
+          "fields": [
+            "celular",
+            "isAdmin",
+            "email",
+            "ruc",
+            "razonSocial"
+          ]
+        }
+      ]
+    },
+    {
+      "pid": "gas-leak-detection-8602a",
+      "repo": "moh-CS/F-E-pro",
+      "leak_count": 1,
+      "leaks": [
+        {
+          "col": "users",
+          "leak": true,
+          "status": 200,
+          "docCount": 1,
+          "fields": [
+            "phoneNumber",
+            "status",
+            "lastName",
+            "apiToken",
+            "email",
+            "createdAt",
+            "firstName",
+            "activatedAt",
+            "username"
+          ]
+        }
+      ]
+    },
+    {
+      "pid": "vault-2c2cd",
+      "repo": "Hamidullah02/vault",
+      "leak_count": 2,
+      "leaks": [
+        {
+          "col": "users",
+          "leak": true,
+          "status": 200,
+          "docCount": 1,
+          "fields": [
+            "email",
+            "uid",
+            "createdAt",
+            "name"
+          ]
+        },
+        {
+          "col": "items",
+          "leak": true,
+          "status": 200,
+          "docCount": 1,
+          "fields": [
+            "landmark",
+            "description",
+            "brand",
+            "name",
+            "type",
+            "imageUrls",
+            "primaryContact",
+            "category",
+            "createdAt",
+            "uniqueFeatures",
+            "resolved",
+            "reward",
+            "color",
+            "userId",
+            "date",
+            "notes",
+            "location",
+            "alternateContact",
+            "time"
+          ]
+        }
+      ]
+    },
+    {
+      "pid": "ftc-rookie-hub",
+      "repo": "TheFTCRookieHub/website",
+      "leak_count": 1,
+      "leaks": [
+        {
+          "col": "posts",
+          "leak": true,
+          "status": 200,
+          "docCount": 1,
+          "fields": [
+            "title",
+            "category",
+            "uid",
+            "content",
+            "createdAt",
+            "author"
+          ]
+        }
+      ]
+    },
+    {
+      "pid": "tmcp-a366e",
+      "repo": "lakshyauniyal/Student-Panel",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "avni-c6af6",
+      "repo": "Vermavnish/Abpup",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "votingprojektneu",
+      "repo": "Eragon816/Voting",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "home-services-app-a9c5e",
+      "repo": "malek771003110/Professionals-Guide",
+      "leak_count": 1,
+      "leaks": [
+        {
+          "col": "chats",
+          "leak": true,
+          "status": 200,
+          "docCount": 1,
+          "fields": [
+            "isRead",
+            "participants",
+            "lastMessageTime",
+            "lastMessage",
+            "lastMessageSenderId",
+            "userNames"
+          ]
+        }
+      ]
+    },
+    {
+      "pid": "rapidguard-fc58c",
+      "repo": "farhannwo/Mughees",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "saviajobs-31490",
+      "repo": "Oscasavia/SaviaJobs",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "mywealth-dca55",
+      "repo": "ahmadwagiehlaw/MyWealth",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "subtra-da8c1",
+      "repo": "nuelfell0ff/Subtra",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "chat-59d29",
+      "repo": "Stephen-J4455/portfolio2",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "delta-forest",
+      "repo": "wefitcenter/wefitcenter.github.io",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "creapp-a7c8e",
+      "repo": "gafelis18/creapp",
+      "leak_count": 0,
+      "leaks": []
+    },
+    {
+      "pid": "reclamamanaus-f23fa",
+      "repo": "FranciscoLLucas/Reclama_Manaus",
+      "leak_count": 1,
+      "leaks": [
+        {
+          "col": "users",
+          "leak": true,
+          "status": 200,
+          "docCount": 1,
+          "fields": [
+            "createdAt",
+            "name",
+            "email"
+          ]
+        }
+      ]
+    },
+    {
+      "pid": "babakan-clinic",
+      "repo": "aliesb/babakan",
       "leak_count": 0,
       "leaks": []
     }
