@@ -10,6 +10,8 @@
 >
 > 📦 **Need all 5 BaaS stacks at once?** The [BaaS Security Pack](https://perufitlife.github.io/supabase-security-skill/pack.html) bundles every scanner + sample reports + fix-SQL libraries — one $99 download.
 
+> 🪞 **Sister tool**: [aitells](https://aitells.vercel.app/) detects + rewrites AI fingerprints in your text (em-dashes, "delve", parallel bullets). Free detector + $19 lifetime rewriter at [/rewrite](https://aitells.vercel.app/rewrite).
+
 [![npm](https://img.shields.io/npm/v/firebase-security?color=red)](https://www.npmjs.com/package/firebase-security) ![license](https://img.shields.io/badge/license-MIT-green) ![node](https://img.shields.io/badge/node-%3E%3D18-blue)
 
 > **Sister tools** for other BaaS platforms (same `--discover` flag, all MIT):
