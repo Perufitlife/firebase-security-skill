@@ -113,3 +113,7 @@ If your team writes outreach, PR descriptions, or social posts with AI, the [ait
 - [`@perufitlife/aitells-mcp`](https://www.npmjs.com/package/@perufitlife/aitells-mcp) — MCP server for Claude Code / Cursor. `detect_ai_tells` + `humanize_text` as native tools.
 - [`Perufitlife/aitells-action`](https://github.com/Perufitlife/aitells-action) — GitHub Action that scans PR titles/bodies/commits for AI patterns. Posts friendly summary comment.
 - [aitells.vercel.app](https://aitells.vercel.app) — free detector + $19 lifetime humanizer (first 100 buyers)
+
+---
+
+📚 Part of [**Awesome Backend Security Auditors**](https://github.com/Perufitlife/awesome-backend-security) — the full collection of keyless active-probe auditors.
