@@ -15,7 +15,7 @@
 [![npm](https://img.shields.io/npm/v/firebase-security?color=red)](https://www.npmjs.com/package/firebase-security) ![license](https://img.shields.io/badge/license-MIT-green) ![node](https://img.shields.io/badge/node-%3E%3D18-blue)
 
 > **Sister tools** for other BaaS platforms (same `--discover` flag, all MIT):
-> [supabase-security](https://www.npmjs.com/package/supabase-security) · [pocketbase-security](https://www.npmjs.com/package/pocketbase-security) · [appwrite-security](https://www.npmjs.com/package/appwrite-security) · [nhost-security](https://www.npmjs.com/package/nhost-security)
+> [supabase-security](https://www.npmjs.com/package/supabase-security) · [pocketbase-security](https://www.npmjs.com/package/pocketbase-security) · [appwrite-security](https://www.npmjs.com/package/appwrite-security) · [nhost-security](https://www.npmjs.com/package/nhost-security) · [strapi-security](https://www.npmjs.com/package/strapi-security)
 
 ## Why this exists
 
